@@ -1,7 +1,15 @@
+import { Cards } from "../../components/Cards"
+import { NewCard } from "../../components/newCard"
 
 
 export const Home = () => {
   return (
-    <h1>Hello world</h1>
+    <div className="grid grid-cols-3 auto-rows-[250px] gap-6">
+      <NewCard />
+      <Cards />
+      <Cards />
+      <Cards />
+      <Cards />
+    </div>
   )
 }
