@@ -26,7 +26,7 @@
     cursor:pointer;
     ">
   <a style="text-decoration:none;color:white;font-weight:bold;"
-    href="https://blogrepository.vercel.app/"
+    href="https://notes-kappa-seven.vercel.app/"
     >Deploy</a>
 </button>
 
