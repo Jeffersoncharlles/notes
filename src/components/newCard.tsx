@@ -98,7 +98,7 @@ export const NewCard = () => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className='inset-0 fixed bg-black/50 backdrop-blur-sm' />
-        <Dialog.Content className='overflow-hidden fixed left-1/2 top-1/2  -translate-y-1/2 -translate-x-1/2 max-w-[640px] h-[60vh] w-full bg-neutral-800 rounded-md flex e flex-col outline-none text-neutral-50' >
+        <Dialog.Content className='overflow-hidden inset-0 md:inset-auto fixed md:left-1/2 md:top-1/2  md:-translate-y-1/2 md:-translate-x-1/2 md:max-w-[640px] md:h-[60vh] w-full bg-neutral-800 md:rounded-md flex e flex-col outline-none text-neutral-50' >
 
           <Dialog.Close onClick={() => setShouldShowOnboarding(true)} className='absolute top-0 right-0 bg-neutral-800 p-1.5 text-neutral-400 hover:text-red-400'>
             <X className='size-6' />

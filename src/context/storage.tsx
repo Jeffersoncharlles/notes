@@ -5,6 +5,7 @@ interface IStorageContext {
   onNoteCreated: (content: string) => void
   search: string
   onHandleFilterNotes: (search: string) => void
+  onNoteDelete: (id: string) => void
 }
 
 interface INotes {
@@ -40,9 +41,18 @@ export const StorageContextProvider = ({ children }: { children: React.ReactNode
     setSearch(search)
   }
 
+  const onNoteDelete = (id: string) => {
+    const notesArray = notes.filter(note => {
+      return note.id !== id
+    })
+
+    setNotes(notesArray)
+    localStorage.setItem('notes', JSON.stringify(notesArray))
+  }
+
 
   return (
-    <StorageContext.Provider value={{ notes, onNoteCreated, search, onHandleFilterNotes }}>
+    <StorageContext.Provider value={{ notes, onNoteCreated, search, onHandleFilterNotes, onNoteDelete }}>
       {children}
     </StorageContext.Provider>
   )
