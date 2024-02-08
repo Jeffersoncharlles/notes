@@ -1,25 +1,27 @@
+
 import { Cards } from "../../components/Cards"
 import { NewCard } from "../../components/newCard"
+import { useStorage } from "../../context/storage"
 
 
 export const Home = () => {
+  const { notes, search } = useStorage()
+
+  const filteredNotes = search !== '' ? notes.filter(note => note.content.toLocaleLowerCase().includes(search.toLocaleLowerCase())) : notes
+
   return (
     <div className="grid grid-cols-3 auto-rows-[250px] gap-6">
       <NewCard />
-      <Cards
-        date="Tue Feb 04 2024 "
-        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, doloremque itaque aliquam deserunt tempora veritatis ea. Dolorum, minus! Officiis dolor eius dolores velit ratione necessitatibus animi laudantium nisi cum ex."
-      />
-      <Cards
-        date="Tue Feb 03 2024 "
-        content="Lorem ipsum dolor sit amet consectetur adipisicing elit.Adipisci labore voluptates fuga officiis.Fuga nisi necessitatibus eaque nihil! Impedit sit illo molestias esse mollitia omnis perferendis ad, perspiciatis at deleniti.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, molestias! Odit sunt dolorem voluptatem aliquam accusamus modi voluptatibus quae quis. Voluptatem saepe repudiandae assumenda repellat dolorem omnis necessitatibus dolores enim!"
-      />
-      <Cards
-        date="Tue Feb 01 2024 "
-        content="Lorem ipsum dolor sit amet consectetur adipisicing elit.Adipisci labore voluptates fuga officiis.Fuga nisi necessitatibus eaque nihil! Impedit sit illo molestias esse mollitia omnis perferendis ad, perspiciatis at deleniti.
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, molestias! Odit sunt dolorem voluptatem aliquam accusamus modi voluptatibus quae quis. Voluptatem saepe repudiandae assumenda repellat dolorem omnis necessitatibus dolores enim!"
-      />
+
+      {filteredNotes.map((item) => (
+        <Cards
+          key={item.id}
+          date={String(item.date)}
+          content={item.content}
+        />
+      ))}
+
+
     </div>
   )
 }
